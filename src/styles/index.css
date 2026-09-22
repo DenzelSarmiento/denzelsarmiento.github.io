@@ -499,3 +499,30 @@ button:active, .btn:active {
   transform: scale(0.95) translateY(0) !important;
 }
 
+/* --- Parche Quirúrgico de Iconos --- */
+
+/* Cuando el navegador imprima la palabra del core, ocultamos el texto plano */
+.material-icons, .material-icons-round, i {
+  font-size: 0 !important; /* Oculta las letras 'local_florist' */
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background-color: #facc15; /* Color amarillo de la flor */
+  
+  /* Dibujamos una flor geométrica perfecta usando máscaras de CSS nativo */
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%) !important;
+  box-shadow: 0 0 20px rgba(250, 204, 21, 0.6) !important;
+  animation: spin-slow 25s linear infinite;
+}
+
+/* Hacemos lo mismo para el icono del botón de avanzar */
+button i, .btn i {
+  width: 14px;
+  height: 14px;
+  background-color: #ffffff;
+  clip-path: polygon(40% 0%, 40% 40%, 0% 40%, 0% 60%, 40% 60%, 40% 100%, 100% 50%) !important;
+  animation: none !important;
+}
+
