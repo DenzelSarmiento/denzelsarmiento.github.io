@@ -29,7 +29,12 @@ jobs:
           node-version: 24 # 👈 Actualizado al estándar de 2026
           
       - name: Install dependencies
-        run: npm install # 👈 Cambiado por seguridad para evitar el error de sincronización
+        run: npm install
+        
+      - name: Build project
+        run: |
+          npx vite build --emptyOutDir # 👈 ¡ESTO OBLIGA A LIMPIAR TODO LO VIEJO!
+
         
       - name: Build project
         run: npm run build
