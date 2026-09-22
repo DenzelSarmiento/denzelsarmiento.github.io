@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/denzelsarmiento.github.io/',
+  base: '/',
   root: '.',
   build: {
     outDir: 'dist',
