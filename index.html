@@ -6,70 +6,16 @@
   <title>Nuestro Baul</title>
   <meta name="description" content="Un jardín personal de nuestros recuerdos por el 21 de septiembre." />
   
-  <!-- Estilos Autónomos Inmunes a CORB/CORS — Resuelven la interfaz gráfica de inmediato -->
-  <style>
-    /* Fondo espacial profundo */
-    body {
-      background-color: #050402 !important;
-      color: #ffffff !important;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
+  <!-- Tailwind v3 Engine -->
+  <script src="https://tailwindcss.com"></script>
 
-    /* PARCHE MÁGICO: Transforma las palabras de Google Icons en iconos reales dibujados por CSS */
-    [data-icon="local_florist"], .material-icons:contains("local_florist"), i:contains("local_florist") {
-      font-size: 0 !important;
-    }
-    
-    /* Si el navegador imprime el texto plano, le damos estilo de flor/flecha mediante pseudoelementos o parches visuales */
-    .material-icons, .material-icons-round, i {
-      color: #facc15 !important;
-      font-weight: bold !important;
-      font-style: normal !important;
-    }
-
-    /* Fuerza el diseño estético de píldora dorada interactiva en todos los botones de tus vistas */
-    button, .btn, .btn-primary, [class*="btn"] {
-      display: inline-flex !important;
-      align-items: center !important;
-      justify-content: center !important;
-      gap: 10px !important;
-      background: linear-gradient(135deg, rgba(250, 204, 21, 0.2) 0%, rgba(234, 179, 8, 0.1) 100%) !important;
-      border: 2px solid rgba(250, 204, 21, 0.6) !important;
-      color: #ffffff !important;
-      font-weight: 600 !important;
-      letter-spacing: 0.05em !important;
-      text-transform: uppercase !important;
-      border-radius: 9999px !important; /* Bordes redondeados tipo píldora */
-      padding: 12px 32px !important;
-      font-size: 0.9rem !important;
-      cursor: pointer !important;
-      box-shadow: 0 0 20px rgba(250, 204, 21, 0.2) !important;
-      backdrop-filter: blur(8px) !important;
-      -webkit-backdrop-filter: blur(8px) !important;
-      transition: all 0.3s ease !important;
-    }
-
-    button:hover, .btn:hover {
-      background: rgba(250, 204, 21, 0.35) !important;
-      border-color: rgba(250, 204, 21, 0.9) !important;
-      box-shadow: 0 0 30px rgba(250, 204, 21, 0.4) !important;
-      transform: translateY(-2px) !important;
-    }
-
-    button:active, .btn:active {
-      transform: scale(0.95) translateY(0) !important;
-    }
-  </style>
-
+  <!-- Fuentes e Iconos Oficiales Combinados -->
+  <link rel="stylesheet" href="https://googleapis.com" />
+  <link rel="stylesheet" href="https://googleapis.com" />
+  <link rel="stylesheet" href="https://googleapis.com" />
+  <link rel="stylesheet" href="https://cloudflare.com" />
+  
+  <!-- Eliminar error de favicon -->
   <link rel="icon" href="data:;base64,=">
 </head>
-<body>
-  <div id="app"></div>
-  
-  <!-- Punto de partida nativo de tu aplicación de Vite -->
-  <script type="module" src="./src/main.js"></script>
-</body>
-</html>
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden">
