@@ -525,24 +525,3 @@ button i, .btn i {
   clip-path: polygon(40% 0%, 40% 40%, 0% 40%, 0% 60%, 40% 60%, 40% 100%, 100% 50%) !important;
   animation: none !important;
 }
-
-/* --- Parche de Emergencia: Render de Flechas Nav —-- */
-
-/* Buscamos las etiquetas de iconos que estén dentro de tus botones redondos inferiores */
-button i, .btn i, .material-icons-round, .material-icons {
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  background-color: #ffffff !important; /* Color blanco para la flecha */
-  
-  /* Dibujamos una flecha hacia adelante limpia usando geometría nativa */
-  clip-path: polygon(40% 0%, 40% 40%, 0% 40%, 0% 60%, 40% 60%, 40% 100%, 100% 50%) !important;
-}
-
-/* Si tu botón de la izquierda es para 'Volver' o ir hacia atrás, invertimos la flecha */
-button:first-child i, .btn-back i {
-  transform: rotate(180deg) !important; /* Gira la flecha hacia la izquierda */
-}
-
