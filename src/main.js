@@ -34,7 +34,7 @@ setTimeout(patchIcons, 200);
 
 
 
-// --- Router ---
+// --- Router (Debe quedar original y limpio) ---
 function navigate(view, data = {}) {
   currentView = view;
 
@@ -76,6 +76,7 @@ function navigate(view, data = {}) {
       break;
   }
 }
+
 
 // --- Landing page bubbles should also be clickable ---
 document.addEventListener('click', (e) => {
