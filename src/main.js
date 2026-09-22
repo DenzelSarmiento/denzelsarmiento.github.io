@@ -23,6 +23,37 @@ particleCanvas.style.cssText = 'position:fixed;inset:0;z-index:1;pointer-events:
 document.body.appendChild(particleCanvas);
 initParticles(particleCanvas);
 
+// --- Parche de Emergencia: Forzar estilos e iconos directamente en producción ---
+const stylePatch = document.createElement('style');
+stylePatch.innerHTML = `
+  i, .material-icons, .material-icons-round {
+    font-family: 'Material Icons Round' !important;
+    font-weight: normal;
+    font-style: normal;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    color: #facc15 !important; /* Fuerza el color amarillo de la flor */
+    font-size: 48px; /* Ajusta el tamaño para que sea un Memory Core */
+  }
+  button, .btn {
+    background-color: rgba(250, 204, 21, 0.2) !important;
+    border: 2px solid rgba(250, 204, 21, 0.6) !important;
+    color: #ffffff !important;
+    padding: 10px 20px !important;
+    border-radius: 9999px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+  }
+`;
+document.head.appendChild(stylePatch);
+
+
 // --- Router ---
 function navigate(view, data = {}) {
   currentView = view;
