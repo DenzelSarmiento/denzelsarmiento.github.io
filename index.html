@@ -4,18 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nuestro Baul</title>
+  <meta name="description" content="Un jardín personal de nuestros recuerdos por el 21 de septiembre." />
   
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://googleapis.com" />
-  <link rel="preconnect" href="https://gstatic.com" crossorigin />
-    <!-- Fuentes e Iconos Corregidos para Producción en GitHub -->
+  <!-- CDN de Tailwind CSS (Fuerza a que carguen todos los estilos, colores y botones) -->
+  <script src="https://tailwindcss.com"></script>
+  <script>
+    // Configura Tailwind para que use el modo oscuro nativo de tu app
+    tailwind.config = { darkMode: 'class' }
+  </script>
+
+  <!-- Fuentes e Iconos de Google Corregidos con Protocolo Seguro -->
   <link rel="stylesheet" href="https://googleapis.com" />
   <link rel="stylesheet" href="https://googleapis.com" />
 
+  <!-- Estilo extra para asegurar que los Material Icons se rendericen como iconos y no como texto plano -->
+  <style>
+    .material-icons-round {
+      font-family: 'Material Icons Round';
+      font-weight: normal;
+      font-style: normal;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 overflow-x-hidden">
   <div id="app"></div>
-  <!-- Apuntamos directo al inicio de tu código de Vite -->
+  
+  <!-- Punto de partida de tu aplicación de Vite -->
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
