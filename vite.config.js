@@ -1,14 +1,5 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: './',
-  root: '.',
-  build: {
-    outDir: 'dist',
-  },
-  server: {
-    port: 5173,
-    open: true,
-  },
-  base: '/memory-core/',
-});
+  base: '/',
+})
