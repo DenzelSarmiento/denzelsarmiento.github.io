@@ -23,35 +23,44 @@ particleCanvas.style.cssText = 'position:fixed;inset:0;z-index:1;pointer-events:
 document.body.appendChild(particleCanvas);
 initParticles(particleCanvas);
 
-// --- Parche de Emergencia: Forzar estilos e iconos directamente en producción ---
+// --- Parche de Emergencia: Estilos Globales de Iconos y Botones ---
 const stylePatch = document.createElement('style');
 stylePatch.innerHTML = `
-  i, .material-icons, .material-icons-round {
-    font-family: 'Material Icons Round' !important;
-    font-weight: normal;
-    font-style: normal;
-    display: inline-block;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    white-space: nowrap;
-    direction: ltr;
-    -webkit-font-smoothing: antialiased;
-    color: #facc15 !important; /* Fuerza el color amarillo de la flor */
-    font-size: 48px; /* Ajusta el tamaño para que sea un Memory Core */
+  /* Fuerza a que cualquier texto de icono se transforme en dibujo animado */
+  i, .material-icons, .material-icons-round, [class*="material-icons"] {
+    font-family: 'Material Icons Round', 'Material Icons', sans-serif !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    word-wrap: normal !important;
+    white-space: nowrap !important;
+    direction: ltr !important;
+    -webkit-font-smoothing: antialiased !important;
+    font-feature-settings: 'liga' !important;
   }
+  
+  /* Ajuste de diseño para el botón de Entrar */
   button, .btn {
-    background-color: rgba(250, 204, 21, 0.2) !important;
-    border: 2px solid rgba(250, 204, 21, 0.6) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    background-color: rgba(250, 204, 21, 0.15) !important;
+    border: 2px solid rgba(250, 204, 21, 0.5) !important;
     color: #ffffff !important;
-    padding: 10px 20px !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-weight: 600 !important;
     border-radius: 9999px !important;
+    padding: 12px 24px !important;
     cursor: pointer !important;
-    transition: all 0.3s ease !important;
+    box-shadow: 0 0 15px rgba(250, 204, 21, 0.2) !important;
   }
 `;
 document.head.appendChild(stylePatch);
+
 
 
 // --- Router ---
