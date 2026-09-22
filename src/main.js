@@ -23,43 +23,40 @@ particleCanvas.style.cssText = 'position:fixed;inset:0;z-index:1;pointer-events:
 document.body.appendChild(particleCanvas);
 initParticles(particleCanvas);
 
-// --- Parche de Emergencia: Estilos Globales de Iconos y Botones ---
-const stylePatch = document.createElement('style');
-stylePatch.innerHTML = `
-  /* Fuerza a que cualquier texto de icono se transforme en dibujo animado */
-  i, .material-icons, .material-icons-round, [class*="material-icons"] {
-    font-family: 'Material Icons Round', 'Material Icons', sans-serif !important;
-    font-weight: normal !important;
-    font-style: normal !important;
-    display: inline-block !important;
-    line-height: 1 !important;
-    text-transform: none !important;
-    letter-spacing: normal !important;
-    word-wrap: normal !important;
-    white-space: nowrap !important;
-    direction: ltr !important;
-    -webkit-font-smoothing: antialiased !important;
-    font-feature-settings: 'liga' !important;
-  }
-  
-  /* Ajuste de diseño para el botón de Entrar */
-  button, .btn {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    background-color: rgba(250, 204, 21, 0.15) !important;
-    border: 2px solid rgba(250, 204, 21, 0.5) !important;
-    color: #ffffff !important;
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-weight: 600 !important;
-    border-radius: 9999px !important;
-    padding: 12px 24px !important;
-    cursor: pointer !important;
-    box-shadow: 0 0 15px rgba(250, 204, 21, 0.2) !important;
-  }
-`;
-document.head.appendChild(stylePatch);
+// --- Parche Definitivo Remasterizado: Interceptor de Cadenas de Texto ---
+function patchIcons() {
+  const elements = document.querySelectorAll('*');
+  elements.forEach(el => {
+    // Si el elemento contiene la palabra de la flor, no importa si tiene espacios
+    if (el.innerHTML && el.innerHTML.includes('local_florist') && !el.innerHTML.includes('svg')) {
+      el.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+          <svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="#facc15" style="width:72px;height:72px;display:inline-block;animation:spin-slow 25s linear infinite;filter:drop-shadow(0 0 12px rgba(250,204,21,0.6));">
+            <path d="M12 2a3 3 0 0 0-3 3v1.07A5.47 5.47 0 0 0 6 5a3 3 0 0 0-3 3 5.47 5.47 0 0 0 1.07 3H3a3 3 0 0 0 0 6h1.07A5.47 5.47 0 0 0 3 16a3 3 0 0 0 3 3 5.47 5.47 0 0 0 3-1.07V19a3 3 0 0 0 6 0v-1.07A5.47 5.47 0 0 0 18 19a3 3 0 0 0 3-3 5.47 5.47 0 0 0-1.07-3H21a3 3 0 0 0 0-6h-1.07A5.47 5.47 0 0 0 21 8a3 3 0 0 0-3-3 5.47 5.47 0 0 0-3 1.07V5a3 3 0 0 0-3-3zm0 7a3 3 0 1 1 0 6 3 3 0 0 1 0-6z"/>
+          </svg>
+          <span style="font-family:sans-serif;font-size:14px;color:rgba(255,255,255,0.7);margin-top:4px;">Primer 21 de septiembre</span>
+        </div>
+      `;
+    }
+    // Reemplazo para la flecha de los botones de navegación
+    if (el.innerHTML && el.innerHTML.includes('arrow_forward') && !el.innerHTML.includes('svg')) {
+      el.innerHTML = el.innerHTML.replace('arrow_forward', `
+        <svg xmlns="http://w3.org" viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;display:inline-block;vertical-align:middle;margin-left:6px;">
+          <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"/>
+        </svg>
+      `);
+    }
+  });
+}
+
+// Monitorear cambios de vistas en el DOM para repatchellar automáticamente
+const originalNavigate = navigate;
+navigate = function(view, data) {
+  originalNavigate(view, data);
+  setTimeout(patchIcons, 40);
+  setTimeout(patchIcons, 150); // Doble verificación por delay de renderizado
+};
+setTimeout(patchIcons, 200);
 
 
 
