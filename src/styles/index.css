@@ -446,3 +446,56 @@ body {
   background-size: 260px 260px;
 }
 
+/* ============================================
+   EMERGENCY PRODUCTION PATCH — Fix Buttons & Icons
+   ============================================ */
+
+/* Fuerza a que los textos sueltos muten a iconos reales del baúl */
+i, .material-icons, .material-icons-round, [class*="material-icons"] {
+  font-family: 'Material Icons Round', 'Material Icons', sans-serif !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+  display: inline-block !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  word-wrap: normal !important;
+  white-space: nowrap !important;
+  direction: ltr !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-feature-settings: 'liga' !important;
+}
+
+/* Fuerza el diseño estético de píldora galáctica en todos tus botones */
+button, .btn, .btn-primary, [class*="btn"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  background-color: rgba(250, 204, 21, 0.15) !important;
+  border: 2px solid rgba(250, 204, 21, 0.5) !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border-radius: 9999px !important; /* Estilo píldora */
+  padding: 12px 28px !important;
+  font-size: 0.875rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 0 15px rgba(250, 204, 21, 0.15) !important;
+  backdrop-filter: blur(4px) !important;
+}
+
+button:hover, .btn:hover {
+  background-color: rgba(250, 204, 21, 0.3) !important;
+  border-color: rgba(250, 204, 21, 0.8) !important;
+  box-shadow: 0 0 25px rgba(250, 204, 21, 0.35) !important;
+  transform: translateY(-2px) !important;
+}
+
+button:active, .btn:active {
+  transform: scale(0.95) translateY(0) !important;
+}
+
