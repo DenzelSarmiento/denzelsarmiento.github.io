@@ -6,19 +6,21 @@
   <title>Nuestro Baul</title>
   <meta name="description" content="Un jardín personal de nuestros recuerdos por el 21 de septiembre." />
   
-  <!-- Tailwind v3 Engine (Carga instantánea sin bloqueos) -->
+  <!-- Tailwind v3 Engine -->
   <script src="https://tailwindcss.com"></script>
 
-    <!-- Fuentes e Iconos Universales para Producción -->
+  <!-- Fuentes de Google Limpias -->
   <link rel="stylesheet" href="https://googleapis.com" />
-  <link rel="stylesheet" href="https://googleapis.com" />
-  <link rel="stylesheet" href="https://googleapis.com+Round" />
-
+  
+  <!-- Kit de Iconos Alternativo (Fuerza la carga inmediata si Google Fonts falla) -->
+  <link rel="stylesheet" href="https://cloudflare.com" />
+  
+  <!-- Apagar el error del favicon -->
+  <link rel="icon" href="data:;base64,=">
 </head>
 <body class="bg-slate-950 text-slate-100 overflow-x-hidden">
   <div id="app"></div>
   
-  <!-- Punto de partida de tu aplicación de Vite -->
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
