@@ -9,18 +9,33 @@
   <!-- Tailwind v3 Engine -->
   <script src="https://tailwindcss.com"></script>
 
-  <!-- Parche Forzado de Tipografías e Iconos de Google (Con protocolo seguro completo) -->
-  <link rel="stylesheet" crossorigin href="https://googleapis.com" />
-  <link rel="stylesheet" crossorigin href="https://googleapis.com" />
-  <link rel="stylesheet" crossorigin href="https://googleapis.com" />
+  <!-- Hojas de estilo forzadas con alias e inmunidad de CORS -->
+  <link rel="stylesheet" href="https://googleapis.com" />
+  <link rel="stylesheet" href="https://googleapis.com" />
+  <link rel="stylesheet" href="https://googleapis.com" />
 
-  <!-- Eliminar error de favicon -->
+  <!-- Script Interceptor: Corrige el error de CORS de Vite en tiempo real -->
+  <script>
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node.tagName === 'LINK' && node.href.includes('googleapis.com/')) {
+            if (!node.href.includes('fonts.googleapis.com')) {
+              console.log('Parcheando ruta rota de Vite:', node.href);
+              node.href = 'https://googleapis.com';
+            }
+          }
+        });
+      });
+    });
+    observer.observe(document.head, { childList: true });
+  </script>
+
   <link rel="icon" href="data:;base64,=">
 </head>
 <body class="bg-slate-950 text-slate-100 overflow-x-hidden">
   <div id="app"></div>
   
-  <!-- Punto de partida de tu aplicación de Vite -->
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
