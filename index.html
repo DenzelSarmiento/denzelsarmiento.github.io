@@ -6,38 +6,14 @@
   <title>Nuestro Baul</title>
   <meta name="description" content="Un jardín personal de nuestros recuerdos por el 21 de septiembre." />
   
-  <!-- CDN de Tailwind CSS (Fuerza a que carguen todos los estilos, colores y botones) -->
-  <script src="https://tailwindcss.com"></script>
-  <script>
-    // Configura Tailwind para que use el modo oscuro nativo de tu app
-    Tailwind.config = { darkMode: 'class' }
-  </script>
-
-  <!-- Fuentes e Iconos de Google Corregidos con Protocolo Seguro -->
+  <!-- Estilos e Iconos en bloque directo -->
+  <link href="https://jsdelivr.net" rel="stylesheet" />
   <link rel="stylesheet" href="https://googleapis.com" />
   <link rel="stylesheet" href="https://googleapis.com" />
-
-  <!-- Estilo extra para asegurar que los Material Icons se rendericen como iconos y no como texto plano -->
-  <style>
-    .material-icons-round {
-      font-family: 'Material Icons Round';
-      font-weight: normal;
-      font-style: normal;
-      display: inline-block;
-      line-height: 1;
-      text-transform: none;
-      letter-spacing: normal;
-      word-wrap: normal;
-      white-space: nowrap;
-      direction: ltr;
-      -webkit-font-smoothing: antialiased;
-    }
-  </style>
 </head>
 <body class="bg-slate-950 text-slate-100 overflow-x-hidden">
   <div id="app"></div>
   
-  <!-- Punto de partida de tu aplicación de Vite -->
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
