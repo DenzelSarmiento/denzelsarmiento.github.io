@@ -1,3 +1,15 @@
+/* Importación oficial de Iconos de Google para el empaquetador de Vite */
+@import url('https://googleapis.com');
+@import url('https://googleapis.com+Round');
+
+/* ============================================
+   MEMORY CORE — Cosmic Design System
+   ============================================ */
+:root {
+  --color-primary: #eab308;
+...
+
+
 /* ============================================
    MEMORY CORE — Cosmic Design System
    ============================================ */
