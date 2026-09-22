@@ -9,18 +9,18 @@
   <!-- Tailwind v3 Engine -->
   <script src="https://tailwindcss.com"></script>
 
-  <!-- Fuentes de Google Limpias -->
-  <link rel="stylesheet" href="https://googleapis.com" />
-  
-  <!-- Kit de Iconos Alternativo (Fuerza la carga inmediata si Google Fonts falla) -->
-  <link rel="stylesheet" href="https://cloudflare.com" />
-  
-  <!-- Apagar el error del favicon -->
+  <!-- Parche Forzado de Tipografías e Iconos de Google (Con protocolo seguro completo) -->
+  <link rel="stylesheet" crossorigin href="https://googleapis.com" />
+  <link rel="stylesheet" crossorigin href="https://googleapis.com" />
+  <link rel="stylesheet" crossorigin href="https://googleapis.com" />
+
+  <!-- Eliminar error de favicon -->
   <link rel="icon" href="data:;base64,=">
 </head>
 <body class="bg-slate-950 text-slate-100 overflow-x-hidden">
   <div id="app"></div>
   
+  <!-- Punto de partida de tu aplicación de Vite -->
   <script type="module" src="./src/main.js"></script>
 </body>
 </html>
