@@ -40,13 +40,15 @@ jobs:
         run: npm run build
         
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5 # 👈 Forzar versión limpia de configuración
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+          retention-days: 1 # 👈 Obliga a GitHub a borrar el caché viejo de producción
           
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
