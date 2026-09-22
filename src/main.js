@@ -23,18 +23,7 @@ particleCanvas.style.cssText = 'position:fixed;inset:0;z-index:1;pointer-events:
 document.body.appendChild(particleCanvas);
 initParticles(particleCanvas);
 
-// Monitorear cambios de vistas en el DOM para repatchellar automáticamente
-const originalNavigate = navigate;
-navigate = function(view, data) {
-  originalNavigate(view, data);
-  setTimeout(patchIcons, 40);
-  setTimeout(patchIcons, 150); // Doble verificación por delay de renderizado
-};
-setTimeout(patchIcons, 200);
-
-
-
-// --- Router (Debe quedar original y limpio) ---
+// --- Router ---
 function navigate(view, data = {}) {
   currentView = view;
 
@@ -76,7 +65,6 @@ function navigate(view, data = {}) {
       break;
   }
 }
-
 
 // --- Landing page bubbles should also be clickable ---
 document.addEventListener('click', (e) => {
