@@ -1,0 +1,448 @@
+/* ============================================
+   MEMORY CORE — Cosmic Design System
+   ============================================ */
+
+/* --- CSS Custom Properties --- */
+:root {
+  --color-primary: #eab308;
+  --color-primary-rgb: 234, 179, 8;
+  --color-secondary: #facc15;
+  --color-secondary-rgb: 250, 204, 21;
+  --color-bg-dark: #1f1910;
+  --color-deep-space: #0d0a05;
+  --color-accent-pink: #f59e0b;
+  --color-accent-blue: #fef08a;
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 2rem;
+  --radius-xl: 3rem;
+  --radius-full: 9999px;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+  --transition-glacial: 2000ms ease-in-out;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-display);
+  background: var(--color-deep-space);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Space Backgrounds --- */
+.space-bg {
+  background: radial-gradient(circle at 50% 120%, #422b0f 0%, #1f1910 40%, #050402 100%);
+}
+
+.nebula-bg {
+  background: radial-gradient(circle at 50% 50%, #291c0b 0%, #120d04 50%, #000000 100%);
+}
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 40px 70px, rgba(250,204,21,0.8), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 90px 40px, rgba(234,179,8,0.6), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 130px 80px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 180px 200px, rgba(250,204,21,0.5), rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 220px 50px, #ffffff, rgba(0,0,0,0));
+  background-size: 250px 250px;
+  opacity: 0.5;
+}
+
+/* --- Glassmorphism --- */
+.glass-bubble {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+}
+
+.glass-key {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+}
+.glass-key:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.glass-key:active {
+  background: rgba(255, 255, 255, 0.18);
+  transform: scale(0.93);
+}
+
+/* --- Planet --- */
+.planet-core {
+  background: radial-gradient(circle at 30% 30%, #2a2a2a 0%, #0a0a0a 70%);
+  box-shadow:
+    inset -20px -20px 50px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(var(--color-primary-rgb), 0.2),
+    0 0 120px rgba(var(--color-primary-rgb), 0.1);
+  border-radius: 50%;
+}
+
+.planet-glow {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(var(--color-primary-rgb), 0.15);
+  filter: blur(40px);
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* --- Prismatic Bubble (Memory Detail) --- */
+.prismatic-bubble {
+  position: relative;
+  border-radius: 50%;
+  box-shadow:
+    0 0 20px rgba(var(--color-primary-rgb), 0.3),
+    0 0 60px rgba(100, 200, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.prismatic-bubble::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg,
+    rgba(255,0,0,0.3), rgba(255,154,0,0.3), rgba(208,222,33,0.3),
+    rgba(79,220,74,0.3), rgba(63,218,216,0.3), rgba(47,201,226,0.3),
+    rgba(28,127,238,0.3), rgba(95,21,242,0.3), rgba(186,12,248,0.3),
+    rgba(251,7,217,0.3), rgba(255,0,0,0.3)
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.6;
+  animation: spin-slow 10s linear infinite;
+  pointer-events: none;
+}
+
+/* --- Orbital Rings --- */
+.orbital-ring {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  pointer-events: none;
+}
+
+.orbit-bubble {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* --- Stardust Particles --- */
+.stardust {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+/* --- Nebula Glow Effects --- */
+.nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(1deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(15px) translateX(8px); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.2); }
+  100% { box-shadow: 0 0 25px rgba(var(--color-primary-rgb), 0.6), 0 0 10px rgba(var(--color-primary-rgb), 0.4); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+  20%, 40%, 60%, 80% { transform: translateX(6px); }
+}
+
+@keyframes scale-in {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes expand-ring {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Animation Utilities */
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-delayed { animation: float 8s ease-in-out infinite 2s; }
+.animate-float-slow { animation: float-gentle 10s ease-in-out infinite 1s; }
+.animate-float-reverse { animation: float-reverse 12s ease-in-out infinite; }
+.animate-pulse-slow { animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-spin-slow { animation: spin-slow 25s linear infinite; }
+.animate-spin-reverse { animation: spin-slow 35s linear infinite reverse; }
+.animate-glow { animation: glow 3s ease-in-out infinite alternate; }
+.animate-shimmer { animation: shimmer 3s linear infinite; }
+.animate-shake { animation: shake 0.5s ease; }
+.animate-scale-in { animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-fade-in { animation: fade-in 0.4s ease forwards; }
+.animate-slide-up { animation: slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Delayed variants */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* ============================================
+   VIEW TRANSITIONS
+   ============================================ */
+
+.view-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.view-enter {
+  animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.view-exit {
+  animation: fade-in 0.3s ease reverse forwards;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.5);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.clickable {
+  cursor: pointer;
+  transition: transform var(--transition-base), background var(--transition-base);
+}
+.clickable:hover {
+  transform: scale(1.05);
+}
+.clickable:active {
+  transform: scale(0.97);
+}
+
+/* Material Icon alignment fix */
+.material-icons-round {
+  vertical-align: middle;
+  line-height: 1;
+}
+
+/* Lock icon badge */
+.lock-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  width: 20px;
+  height: 20px;
+  background: rgba(var(--color-primary-rgb), 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  border: 2px solid rgba(0,0,0,0.3);
+}
+
+/* Responsive helpers */
+@media (min-width: 768px) {
+  .md-scale-up {
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 380px) {
+  .sm-compact {
+    transform: scale(0.85);
+  }
+}
+
+/* ============================================
+   SHOOTING STARS
+   ============================================ */
+
+@keyframes shooting-star-move {
+  0% {
+    transform: rotate(var(--angle, 25deg)) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(var(--angle, 25deg)) translateX(min(60vw, 500px));
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  filter: blur(0.3px);
+}
+
+/* ============================================
+   PARALLAX STAR LAYERS
+   ============================================ */
+
+.parallax-stars-deep {
+  background-image:
+    radial-gradient(1px 1px at 15px 45px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 80px 120px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 150px 20px, rgba(234,179,8,0.4), transparent),
+    radial-gradient(1px 1px at 190px 180px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 230px 90px, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 50px 200px, rgba(250,204,21,0.3), transparent);
+  background-size: 280px 280px;
+}
+
+.parallax-stars-mid {
+  background-image:
+    radial-gradient(1.5px 1.5px at 35px 70px, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 110px 30px, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1.5px 1.5px at 170px 150px, rgba(234,179,8,0.5), transparent),
+    radial-gradient(1px 1px at 60px 140px, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 200px 60px, rgba(250,204,21,0.4), transparent);
+  background-size: 220px 220px;
+}
+
+.parallax-stars-near {
+  background-image:
+    radial-gradient(2px 2px at 25px 55px, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1.5px 1.5px at 140px 100px, rgba(234,179,8,0.7), transparent),
+    radial-gradient(1.5px 1.5px at 90px 180px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 210px 40px, rgba(250,204,21,0.5), transparent);
+  background-size: 260px 260px;
+}
+

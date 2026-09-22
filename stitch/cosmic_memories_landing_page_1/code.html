@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cosmic Memories Landing Page</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#a413ec",
+              "background-light": "#f7f6f8",
+              "background-dark": "#1c1022",
+              "deep-space": "#0a0510",
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'float-delayed': 'float 8s ease-in-out infinite 2s',
+              'float-slow': 'float 10s ease-in-out infinite 1s',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'spin-slow': 'spin 20s linear infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-20px)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      /* Custom background pattern for space effect */
+      .space-bg {
+        background: radial-gradient(circle at 50% 120%, #2d0b44 0%, #1c1022 40%, #050208 100%);
+      }
+      
+      .stars {
+        background-image: 
+          radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 50px 160px, #ffffff, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+          radial-gradient(1px 1px at 130px 80px, #ffffff, rgba(0,0,0,0));
+        background-size: 200px 200px;
+        opacity: 0.3;
+      }
+
+      /* Glassmorphism utility */
+      .glass-bubble {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Planet Glow */
+      .planet-shadow {
+        box-shadow: 
+          inset -20px -20px 50px rgba(0,0,0,0.8),
+          0 0 50px rgba(164, 19, 236, 0.15),
+          0 0 100px rgba(164, 19, 236, 0.1);
+      }
+      
+      /* Hide scrollbar for clean UI */
+      ::-webkit-scrollbar {
+          width: 0px;
+          background: transparent;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-800 dark:text-white antialiased overflow-hidden h-screen selection:bg-primary selection:text-white">
+<!-- Main Container -->
+<div class="relative w-full h-full space-bg flex flex-col items-center justify-between overflow-hidden">
+<!-- Animated Stars Background Layer -->
+<div class="absolute inset-0 stars z-0 pointer-events-none"></div>
+<!-- Subtle Nebula Glows -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+<div class="absolute -top-20 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse-slow"></div>
+<div class="absolute top-1/2 -right-32 w-80 h-80 bg-blue-500/10 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-20 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Header -->
+<header class="relative z-50 w-full px-6 py-6 flex justify-between items-center">
+<button class="w-12 h-12 rounded-full glass-bubble flex items-center justify-center text-white hover:bg-white/10 transition-colors">
+<span class="material-icons-round">menu</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="text-xs font-semibold tracking-[0.2em] text-primary/80 uppercase mb-1">Timeline</span>
+<h1 class="text-lg font-bold text-white tracking-wide">Cosmic Memories</h1>
+</div>
+<button class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-purple-400 flex items-center justify-center text-white shadow-[0_0_20px_rgba(164,19,236,0.5)] hover:shadow-[0_0_30px_rgba(164,19,236,0.7)] transition-shadow">
+<span class="material-icons-round">add</span>
+</button>
+</header>
+<!-- Main Content Area: The Universe -->
+<main class="relative z-10 flex-1 w-full flex items-center justify-center">
+<!-- Central Planet Anchor -->
+<div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full bg-background-dark planet-shadow flex items-center justify-center z-10">
+<!-- Planet Texture/Detail Hint -->
+<div class="absolute inset-0 rounded-full bg-gradient-to-br from-white/5 to-transparent opacity-50"></div>
+<div class="absolute w-full h-full rounded-full border border-white/5 animate-spin-slow opacity-30 scale-110 border-dashed"></div>
+<div class="absolute w-full h-full rounded-full border border-primary/20 animate-spin-slow opacity-20 scale-150" style="animation-direction: reverse;"></div>
+<div class="text-center z-20 pointer-events-none">
+<span class="block text-4xl mb-1">🪐</span>
+<p class="text-xs font-light text-white/40 tracking-widest uppercase">Memory Core</p>
+</div>
+</div>
+<!-- Floating Memory Bubbles (positioned absolutely around the center) -->
+<!-- Bubble 1: Top Left - Icon -->
+<div class="absolute top-[15%] left-[10%] animate-float z-20">
+<div class="w-16 h-16 rounded-full glass-bubble flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all hover:scale-110 group">
+<span class="text-2xl group-hover:animate-pulse">✈️</span>
+</div>
+</div>
+<!-- Bubble 2: Top Right - Text Capsule -->
+<div class="absolute top-[20%] right-[8%] animate-float-delayed z-20">
+<div class="px-5 py-3 rounded-full glass-bubble flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all hover:scale-105">
+<span class="material-icons-round text-primary text-sm mr-2">favorite</span>
+<span class="text-sm font-semibold text-white">First Date</span>
+</div>
+</div>
+<!-- Bubble 3: Mid Left - Large Image/Text -->
+<div class="absolute top-[45%] left-[-2%] md:left-[15%] animate-float-slow z-20">
+<div class="w-24 h-24 rounded-full glass-bubble flex flex-col items-center justify-center cursor-pointer hover:bg-white/10 transition-all hover:scale-110 p-2 text-center group">
+<span class="text-xs font-bold text-white mb-1">Paris</span>
+<span class="text-[10px] text-white/60">2023</span>
+<div class="mt-1 w-8 h-1 bg-primary/50 rounded-full group-hover:w-12 transition-all duration-500"></div>
+</div>
+</div>
+<!-- Bubble 4: Mid Right - Icon -->
+<div class="absolute top-[50%] right-[5%] md:right-[20%] animate-float z-20">
+<div class="w-14 h-14 rounded-full glass-bubble flex items-center justify-center cursor-pointer hover:bg-white/10 transition-all hover:scale-110">
+<span class="text-xl">🎓</span>
+</div>
+</div>
+<!-- Bubble 5: Bottom Left - Text Capsule -->
+<div class="absolute bottom-[25%] left-[12%] animate-float-delayed z-20">
+<div class="px-4 py-4 rounded-full glass-bubble flex items-center justify-center gap-2 cursor-pointer hover:bg-white/10 transition-all hover:scale-105">
+<div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+<span class="material-icons-round text-white text-sm">home</span>
+</div>
+<div class="flex flex-col pr-2">
+<span class="text-xs font-bold text-white">New Home</span>
+<span class="text-[10px] text-gray-400">Oct 12</span>
+</div>
+</div>
+</div>
+<!-- Bubble 6: Bottom Right - Tiny -->
+<div class="absolute bottom-[20%] right-[15%] animate-float-slow z-10">
+<div class="w-10 h-10 rounded-full glass-bubble bg-primary/20 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+<div class="w-2 h-2 rounded-full bg-primary animate-ping"></div>
+</div>
+</div>
+</main>
+<!-- Footer / CTA -->
+<footer class="relative z-50 w-full p-8 pb-10 flex flex-col items-center justify-center gap-4">
+<!-- Stats -->
+<div class="flex items-center gap-6 text-white/50 text-xs font-medium tracking-wide mb-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span>124 Memories</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-blue-400"></span>
+<span>3 Years</span>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="group relative w-full max-w-xs h-14 rounded-full bg-white text-background-dark font-bold text-lg shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)] transition-all overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+<span class="relative z-10 flex items-center justify-center gap-2">
+                    Enter Your Universe
+                    <span class="material-icons-round text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</span>
+</button>
+<p class="text-[10px] text-white/30 mt-2">Last updated: Just now</p>
+</footer>
+</div>
+</body></html>
